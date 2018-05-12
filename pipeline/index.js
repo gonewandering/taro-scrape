@@ -3,5 +3,6 @@ module.exports = [
   require('./text'),
   require('./url'),
   require('./images'),
-  require('./links')
+  require('./links'),
+  require('./nlp')
 ]
