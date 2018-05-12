@@ -10,7 +10,7 @@ module.exports = async function (page) {
 
   page.content.entities = await client.analyzeEntities({document: document})
   page.content.sentiment = await client.analyzeSentiment({document: document})
-  oage.content.topics = await client.classifyText({document: document})
-  
+  page.content.topics = await client.classifyText({document: document})
+
   return page
 }
