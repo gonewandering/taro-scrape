@@ -8,9 +8,17 @@ module.exports = async function (page) {
     type: 'PLAIN_TEXT',
   }
 
-  page.content.entities = await client.analyzeEntities({document: document})
-  page.content.sentiment = await client.analyzeSentiment({document: document})
-  page.content.topics = await client.classifyText({document: document})
+  page.content = page.content || {
+    entities: [],
+    sentiment: [],
+    topics: []
+  }
 
+  if (page.content.text.length > 200) {
+    page.content.entities = await client.analyzeEntities({document: document})
+    page.content.sentiment = await client.analyzeSentiment({document: document})
+    page.content.topics = await client.classifyText({document: document})
+  }
+  
   return page
 }
